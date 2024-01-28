@@ -3,6 +3,9 @@
 <head>
     <title>Kapcsold fel az összes lámpát! (Ha tudod 😈😈😈)</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
         .container {
             display: flex;
             flex-direction: column;
@@ -15,42 +18,60 @@
         }
         .grid-container {
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: repeat(2, 50px);
             gap: 10px;
-            margin-left: 20px;
         }
         .grid-item {
             width: 50px;
             height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: white;
             border: 1px solid black;
         }
         .black {
             background-color: black;
         }
+        .buttons-row,
+        .buttons-column {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .button {
+            padding: 5px 10px;
+            font-size: 14px; /* Smaller font size */
+        }
         .column-buttons {
             display: flex;
-            justify-content: center;
-            gap: 42px;
-            margin-bottom: -10px;
-            padding-left: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-right: 10px;
         }
         .emoji {
             font-size: 30px;
             text-align: center;
             padding: 10px;
         }
+        h3 {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <h3>Kapcsold fel az összes lámpát! (Ha tudod 😈😈😈)</h3>
     <div class="container">
-        <div class="column-buttons">
-            <button onclick="toggleColumn(1)">Toggle Column 1</button>
-            <button onclick="toggleColumn(2)">Toggle Column 2</button>
+        <div class="buttons-row">
+            <div style="width: 50px;"></div> <!-- Spacer -->
+            <button class="button" onclick="toggleColumn(1)">Toggle Column 1</button>
+            <button class="button" onclick="toggleColumn(2)">Toggle Column 2</button>
         </div>
         <div class="row">
-            <button onclick="toggleRow(1)">Toggle Row 1</button>
+            <div class="column-buttons">
+                <button class="button" onclick="toggleRow(1)">Toggle Row 1</button>
+                <button class="button" onclick="toggleRow(2)">Toggle Row 2</button>
+            </div>
             <div class="grid-container">
                 <div class="grid-item" id="cell11"></div>
                 <div class="grid-item" id="cell12"></div>
@@ -58,11 +79,8 @@
                 <div class="grid-item" id="cell22"></div>
             </div>
         </div>
-        <div class="row">
-            <button onclick="toggleRow(2)">Toggle Row 2</button>
-        </div>
-        <div class="emoji">😈</div>
     </div>
+    <div class="emoji">😈</div>
 
     <script>
         let grid = [[false, false], [true, false]]; // false for white, true for black
