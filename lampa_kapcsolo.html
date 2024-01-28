@@ -68,11 +68,26 @@
             cursor: pointer;
             font-weight: bold;
         }
+        /* Style for image buttons */
+        .image-button {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+        }
     </style>
 </head>
 <body>
     <h3>Kapcsold fel az összes lámpát! (Ha tudod 😈😈😈)</h3>
     <div class="container">
+        <div class="buttons-row">
+            <!-- Image buttons for initial states -->
+            <button class="image-button" onclick="setInitialState(1)"><img src="default.png" alt="Default State"></button>
+            <button class="image-button" onclick="setInitialState(2)"><img src="two-in-a-row.png" alt="Two in a Row"></button>
+            <button class="image-button" onclick="setInitialState(3)"><img src="diagonal.png" alt="Diagonal"></button>
+        </div>
         <div class="buttons-row">
             <div style="width: 50px;"></div> <!-- Spacer -->
             <button class="button" onclick="toggleColumn(1)">Toggle Column 1</button>
@@ -98,10 +113,8 @@
         <div class="help-title" onclick="toggleHelp()">Egy kis segítség</div>
         <label>számold meg, hány lámpa ég!</label>
     </div>
-    
-    <!-- Add a button to toggle the help container -->
-    <button class="button" onclick="toggleHelp()">Toggle Help</button>
 
+    <!-- JavaScript for setting initial states -->
     <script>
         let grid = [[false, false], [true, false]]; // false for white, true for yellow
 
@@ -135,6 +148,30 @@
         function toggleHelp() {
             let helpContainer = document.querySelector(".help-container");
             helpContainer.style.display = helpContainer.style.display === "none" ? "block" : "none";
+        }
+
+        // Function to set initial grid states
+        function setInitialState(state) {
+            switch (state) {
+                case 1: // Default
+                    grid = [[true, false], [false, false]];
+                    break;
+                case 2: // Two in a Row
+                    grid = [[true, true], [false, false]];
+                    break;
+                case 3: // Diagonal
+                    grid = [[true, false], [false, true]];
+                    break;
+                default:
+                    grid = [[false, false], [false, false]]; // Default
+            }
+
+            // Update the grid
+            for (let row = 1; row <= 2; row++) {
+                for (let col = 1; col <= 2; col++) {
+                    updateCell(row, col);
+                }
+            }
         }
     </script>
 </body>
