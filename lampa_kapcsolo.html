@@ -27,11 +27,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white;
+            background-color: yellow; /* Change to yellow */
             border: 1px solid black;
-        }
-        .black {
-            background-color: black;
         }
         .buttons-row,
         .buttons-column {
@@ -40,8 +37,8 @@
             gap: 10px;
         }
         .button {
-            padding: 5px 8px; /* Adjust padding for smaller buttons */
-            font-size: 12px; /* Smaller font size */
+            padding: 5px 8px;
+            font-size: 12px;
         }
         .column-buttons {
             display: flex;
@@ -56,6 +53,17 @@
         }
         h3 {
             text-align: center;
+        }
+        /* Add styles for the expand/collapse div */
+        .help-container {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none; /* Initially hidden */
+        }
+        .help-title {
+            cursor: pointer;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -82,8 +90,14 @@
     </div>
     <div class="emoji">😈</div>
 
+    <!-- Add the expand/collapse div -->
+    <div class="help-container">
+        <div class="help-title" onclick="toggleHelp()">Egy kis segítség</div>
+        <label>számold meg, hány lámpa ég!</label>
+    </div>
+
     <script>
-        let grid = [[false, false], [true, false]]; // false for white, true for black
+        let grid = [[false, false], [true, false]]; // false for white, true for yellow
 
         function toggleRow(row) {
             for (let col = 0; col < 2; col++) {
@@ -102,14 +116,20 @@
         function updateCell(row, col) {
             let cell = document.getElementById(`cell${row}${col}`);
             if (grid[row - 1][col - 1]) {
-                cell.classList.add("black");
+                cell.classList.add("yellow");
             } else {
-                cell.classList.remove("black");
+                cell.classList.remove("yellow");
             }
         }
 
         // Initialize the grid
         updateCell(2, 1);
+
+        // Function to toggle the expand/collapse div
+        function toggleHelp() {
+            let helpContainer = document.querySelector(".help-container");
+            helpContainer.style.display = helpContainer.style.display === "none" ? "block" : "none";
+        }
     </script>
 </body>
 </html>
