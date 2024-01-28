@@ -179,13 +179,13 @@
         function setInitialState(state) {
             switch (state) {
                 case 1: // Default
-                    grid = [[true, false], [false, false]];
+                    grid = [[false, false], [true, false]];
                     break;
                 case 2: // Two in a Row
-                    grid = [[true, true], [false, false]];
+                    grid = [[false, false], [true, true]];
                     break;
                 case 3: // Diagonal
-                    grid = [[true, false], [false, true]];
+                    grid = [[false, true], [true, false]];
                     break;
                 default:
                     grid = [[false, false], [false, false]]; // Default
