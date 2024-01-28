@@ -70,12 +70,22 @@
         }
         /* Style for image buttons */
         .image-button {
-            width: 10px;
-            height: 10px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
             border: none;
             background: none;
             padding: 0;
+        }
+        /* Style for arrow buttons */
+        .arrow-button {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            font-size: 18px;
         }
     </style>
 </head>
@@ -90,13 +100,13 @@
         </div>
         <div class="buttons-row">
             <div style="width: 50px;"></div> <!-- Spacer -->
-            <button class="button" onclick="toggleColumn(1)">Toggle Column 1</button>
-            <button class="button" onclick="toggleColumn(2)">Toggle Column 2</button>
+            <button class="arrow-button" onclick="toggleColumn(1)">←</button>
+            <button class="arrow-button" onclick="toggleColumn(2)">→</button>
         </div>
         <div class="row">
             <div class="column-buttons">
-                <button class="button" onclick="toggleRow(1)">Toggle Row 1</button>
-                <button class="button" onclick="toggleRow(2)">Toggle Row 2</button>
+                <button class="arrow-button" onclick="toggleRow(1)">↑</button>
+                <button class="arrow-button" onclick="toggleRow(2)">↓</button>
             </div>
             <div class="grid-container">
                 <div class="grid-item" id="cell11"></div>
@@ -107,6 +117,9 @@
         </div>
     </div>
     <div class="emoji">😈</div>
+
+    <!-- Add a button to toggle the help container -->
+    <button class="button" onclick="toggleHelp()">Kukucs!</button>
 
     <!-- Add the expand/collapse div -->
     <div class="help-container">
