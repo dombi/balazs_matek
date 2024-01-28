@@ -27,7 +27,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: white; /* Change back to white */
+            background-color: white;
             border: 1px solid black;
         }
         .yellow {
@@ -98,6 +98,9 @@
         <div class="help-title" onclick="toggleHelp()">Egy kis segítség</div>
         <label>számold meg, hány lámpa ég!</label>
     </div>
+    
+    <!-- Add a button to toggle the help container -->
+    <button class="button" onclick="toggleHelp()">Toggle Help</button>
 
     <script>
         let grid = [[false, false], [true, false]]; // false for white, true for yellow
