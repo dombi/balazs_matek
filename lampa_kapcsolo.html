@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kapcsold fel az összes lámpát! (Ha tudod 😈😈😈)</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 10px;
+            padding: 10px;
+        }
+        .grid-item {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: 1px solid black;
+        }
+        .black {
+            background-color: black;
+        }
+        .emoji {
+            font-size: 30px;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Kapcsold fel az összes lámpát! (Ha tudod 😈😈😈)</h3>
+    <div class="grid-container">
+        <div class="grid-item" id="cell11"></div>
+        <div class="grid-item" id="cell12"></div>
+        <div class="grid-item" id="cell21"></div>
+        <div class="grid-item" id="cell22"></div>
+    </div>
+    <button onclick="toggleRow(1)">Toggle Row 1</button>
+    <button onclick="toggleRow(2)">Toggle Row 2</button>
+    <button onclick="toggleColumn(1)">Toggle Column 1</button>
+    <button onclick="toggleColumn(2)">Toggle Column 2</button>
+    <div class="emoji">😈</div>
+
+    <script>
+        let grid = [[false, false], [true, false]]; // false for white, true for black
+
+        function toggleRow(row) {
+            for (let col = 0; col < 2; col++) {
+                grid[row - 1][col] = !grid[row - 1][col];
+                updateCell(row, col + 1);
+            }
+        }
+
+        function toggleColumn(col) {
+            for (let row = 0; row < 2; row++) {
+                grid[row][col - 1] = !grid[row][col - 1];
+                updateCell(row + 1, col);
+            }
+        }
+
+        function updateCell(row, col) {
+            let cell = document.getElementById(`cell${row}${col}`);
+            if (grid[row - 1][col - 1]) {
+                cell.classList.add("black");
+            } else {
+                cell.classList.remove("black");
+            }
+        }
+
+        // Initialize the grid
+        updateCell(2, 1);
+    </script>
+</body>
+</html>
