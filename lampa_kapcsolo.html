@@ -70,12 +70,17 @@
         }
         /* Style for image buttons */
         .image-button {
-            width: 5px;
-            height: 5px;
+            width: 20px;
+            height: 20px;
             cursor: pointer;
             border: none;
             background: none;
             padding: 0;
+        }
+        .image-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         /* Style for arrow buttons */
         .arrow-button {
@@ -92,7 +97,7 @@
 <body>
     <h3>Kapcsold fel az összes lámpát! (Ha tudod 😈😈😈)</h3>
     <div class="container">
-        <div class="buttons-row">
+        <div class="image-buttons">
             <!-- Image buttons for initial states -->
             <button class="image-button" onclick="setInitialState(1)"><img src="default.png" alt="Default State"></button>
             <button class="image-button" onclick="setInitialState(2)"><img src="two-in-a-row.png" alt="Two in a Row"></button>
